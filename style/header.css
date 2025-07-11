@@ -24,8 +24,12 @@
     gap: 8px;
 }
 
+.title img {
+    height: 96px;
+}
+
 #inputSearch {
-    padding-left: 8px;
+    padding-left: 16px;
     box-shadow: 0px 0px 5px #484747;
     border-radius: 8px;
     font-weight: 600;

@@ -1,0 +1,8 @@
+* {
+    color: white;
+}
+
+.main_body {
+    display: flex;
+    text-align: center;
+}
