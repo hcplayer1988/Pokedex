@@ -19,10 +19,10 @@ function getPkmPrevCard(pokemonList) {
         <div class="seperator"></div>
         <div class="pkm_footer">
           <div>
-            <img src="./assets/icons/type_icons/grass.svg" alt="type_icons">
+            <img id="typeOne" src="./assets/icons/type_icons/grass.svg" alt="type_icons">
           </div>
           <div>
-            <img src="./assets/icons/type_icons/poison.svg" alt="">
+            <img id="typeTwo" src="./assets/icons/type_icons/poison.svg" alt="">
           </div>
         </div>
       </div>
