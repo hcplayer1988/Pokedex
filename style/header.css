@@ -4,13 +4,45 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 32px;
     padding-top: 24px;
     padding-bottom: 24px;
     flex-grow: 0;
     flex-shrink: 0;
 }
 
+.searchbar {
+    display: flex;
+    gap: 8px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 700;
+    gap: 8px;
+}
+
+#inputSearch {
+    padding-left: 8px;
+    box-shadow: 0px 0px 5px #484747;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 20px;
+    width: 300px;
+}
+
 header button {
     cursor: pointer;
+    box-shadow: 0px 0px 5px #484747;
+    border-radius: 8px;
+    background-color: orange;
+    font-weight: 600;
+    font-size: 20px;
+    color: whitesmoke;
+    padding-top: 4px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
 }

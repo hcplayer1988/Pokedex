@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
 
+    <link rel="stylesheet" href="./style/fonts.css">
     <link rel="stylesheet" href="./style/standard.css">
     <link rel="stylesheet" href="./style/header.css">
     <link rel="stylesheet" href="./style/footer.css">
@@ -21,9 +22,14 @@
 
         <header>
             <div class="head_container">
-                <img src="./assets/img/pokedex.png" alt="">Pokédex
-                <input type="text" placeholder="search Pokemon...">
-                <button>Search</button>
+                <div class="title">
+                    <img src="./assets/img/pokedex.png" alt="">
+                    <span>Pokédex</span>
+                </div>
+                <div class="searchbar">
+                    <input id="inputSearch" type="text" placeholder="search Pokemon...">
+                    <button id="ssearrchBtn">Search</button>
+                </div>
             </div>
         </header>
 
