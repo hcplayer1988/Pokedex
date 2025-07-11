@@ -52,6 +52,7 @@ header button {
     .head_container {
         gap: 12px;
     }
+    
     .searchbar {
         display: flex;
         flex-direction: column;
