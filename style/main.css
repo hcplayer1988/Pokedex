@@ -1,0 +1,41 @@
+main {
+    background-color: #05171e;
+    flex-grow: 1;
+}
+
+.pkm_cards {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 96px;
+    padding-right: 96px;
+    width: 100%;
+    max-width: 2560px;
+    margin: 0 auto;
+}
+
+.pkm_cad_prev {
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke;
+    background-color: #082029;
+    width: 150px;
+    height: auto;
+    box-shadow: 0px 0px 5px #484747;
+    border-radius: 12px;
+}
+
+.pkm_header {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.pkm_pic {
+    padding: 8px;
+}
+
+.pkm_footer {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+}
