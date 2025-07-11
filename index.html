@@ -14,46 +14,52 @@
     <link rel="shortcut icon" href="./assets/icons/pokedex_fav.png" type="image/x-icon">
 </head>
 <body onload="init()">
+    <div class="wrapper">
 
-    <header>
-        <img src="./assets/img/pokedex.png" alt="">Pokédex
-        <input type="text" placeholder="suche Pokemon...">
-        <button>Suche</button>
-    </header>
-
-    <main>
-        <div class="pkm_cards">
-            <div class="pkm_cad_prev">
-                <div class="pkm_header">
-                    <div>
-                        <span>#1</span>
-                    </div>
-                    <div>
-                        <span>Bisasam</span>
-                    </div>
-                </div>
-                <div class="pkm_pic">
-                    <img src="" alt="pkm_img">
-                </div>
-                <div class="pkm_footer">
-                    <div>
-                        <img src="" alt="type_icons">
-                    </div>
-                </div>
+        <header>
+            <div class="head_container">
+                <img src="./assets/img/pokedex.png" alt="">Pokédex
+                <input type="text" placeholder="suche Pokemon...">
+                <button>Suche</button>
             </div>
+        </header>
 
-        </div>
-    </main>
+        <main class="main_body">
+            <div class="pkm_cards">
 
-    <footer>
-        <div class="footer">
-          <a href="#start">
-          <img src="./assets/icons/android-chrome-192x192.png" alt="logo">
-          </a>
-            <span> &copy; created by Falko 2025</span>
-            <span>Impressum</span>
-            <a href="https://github.com/hcplayer1988">my Github</a>
-        </div>
-    </footer>
+                <div class="pkm_cad_prev">
+                    <div id="pkmHeader" class="pkm_header">
+                        <div>
+                            <span id="pkmmId">#1</span>
+                        </div>
+                        <div>
+                            <span id="pkmName">Bisasam</span>
+                        </div>
+                    </div>
+                    <div class="pkm_pic">
+                        <img src="" alt="pkm_img">
+                    </div>
+                    <div id="pkmFooter" class="pkm_footer">
+                        <div>
+                            <img id="pkmImg" src="" alt="type_icons">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer">
+                <a href="#start">
+                <img src="./assets/img/pokeball.png" alt="logo">
+                </a>
+                    <span> &copy; created by Falko 2025</span>
+                    <span>Impressum</span>
+                    <a href="https://github.com/hcplayer1988">my Github</a>
+            </div>
+        </footer>
+
+    </div>
 </body>
 </html>
