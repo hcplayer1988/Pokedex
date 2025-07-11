@@ -1,0 +1,27 @@
+body {
+    margin: 00;
+}
+
+header {
+    background-color: #082029;
+    color: white;
+}
+
+header button {
+    cursor: pointer;
+}
+
+main {
+    background-color: #05171e;
+}
+
+.pkm_cad_prev {
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke;
+}
+
+footer {
+    background-color: #082029;
+    color: white;
+}
