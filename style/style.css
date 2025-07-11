@@ -5,6 +5,12 @@ body {
 header {
     background-color: #082029;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding-top: 24px;
+    padding-bottom: 24px;
 }
 
 header button {
@@ -15,13 +21,45 @@ main {
     background-color: #05171e;
 }
 
+.pkm_cards {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 96px;
+    padding-right: 96px;
+    width: 100%;
+}
+
 .pkm_cad_prev {
     display: flex;
     flex-direction: column;
     color: whitesmoke;
+    background-color: #082029;
+    width: 150px;
+    height: auto;
+}
+
+.pkm_header {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.pkm_pic {
+    padding: 8px;
+}
+
+.pkm_footer {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
 }
 
 footer {
     background-color: #082029;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
 }
