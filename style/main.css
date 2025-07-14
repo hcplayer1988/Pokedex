@@ -26,6 +26,14 @@ main {
     border-radius: 12px;
 }
 
+.pkm_cad_prev:hover {
+    background-color: #144a5e;
+    box-shadow: 0px 0px 10px #484747;
+    cursor: pointer;
+    transform: scale(1.1);
+
+}
+
 .seperator {
     height: 1px;
     width: 90%;
@@ -69,4 +77,19 @@ main {
     border: none;
     border-radius: 20px;
     padding: 0;
+}
+
+#more_pkm {
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #484747;
+    border-radius: 8px;
+    background-color: orange;
+    font-weight: 600;
+    font-size: 20px;
+    color: whitesmoke;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 12px;
 }
