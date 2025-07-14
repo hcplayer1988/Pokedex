@@ -85,19 +85,40 @@ function renderCards(pokemonList) {
   console.log(pokemonList);
 }
 
-// load more Pokemon
-function morePkm() {
-  if (currentOffset >= 151) {
-    document.getElementById("morePkm").style.display = "none";
-    return;
-  }
+
+// loadingspiner
+function showLoadingSpinner() {
+  document.getElementById("loadingScreen").style.display = "block";
+  document.querySelector("main").classList.add("blur");
+  document.getElementById("morePkm").disabled = true;
+}
+
+
+function hideLoading() {
+  document.getElementById("loadingScreen").style.display = "none";
+  document.querySelector("main").classList.remove("blur");
+  document.getElementById("morePkm").disabled = false;
+}
+
+
+function loadPokemonBatch() {
   let remaining = 151 - currentOffset;
   let loadAmount = Math.min(pokemonLimit, remaining);
+
   fetchPkm(currentOffset, loadAmount);
   currentOffset += loadAmount;
+
   if (currentOffset >= 151) {
     document.getElementById("morePkm").style.display = "none";
   }
 }
 
+
+function morePkm() {
+  showLoadingSpinner();
+    setTimeout(() => {
+    loadPokemonBatch();
+    hideLoading(); 
+  }, 1500);
+}
 

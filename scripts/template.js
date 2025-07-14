@@ -1,3 +1,4 @@
+
 // Pokemon preview card template
 
 function getPkmPrevCard(pokemonList) {
@@ -15,7 +16,7 @@ function getPkmPrevCard(pokemonList) {
       <div class="pkm_cad_prev">
         <div class="pkm_header">
           <div>
-            <span>#${index + 1 + currentOffset}</span>
+            <span>#${pokemon.id}</span>
           </div>
           <div>
             <span>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</span>

@@ -26,6 +26,7 @@
 
 .title img {
     height: 96px;
+    cursor: pointer;
 }
 
 #inputSearch {

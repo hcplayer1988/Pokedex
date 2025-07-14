@@ -1,6 +1,15 @@
+
+
 main {
     background-color: #05171e;
     flex-grow: 1;
+}
+
+.main_body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .pkm_cards {
@@ -92,4 +101,43 @@ main {
     padding-left: 16px;
     padding-right: 16px;
     margin: 12px;
+}
+
+#loadingScreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+#loadingBall {
+  width: 64px;
+  height: 64px;
+  animation: rotateBall 1s linear infinite;
+}
+
+@keyframes rotateBall {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.blur {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
+
+#morePkm:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

@@ -20,13 +20,15 @@
 </head>
 
 <body onload="init()">
-    <div class="wrapper">
+    <div class="wrapper" id="start">
 
         <header>
             <div class="head_container">
                 <div class="title">
-                    <img src="./assets/img/pokedex.png" alt="">
-                    <span id="start">Pokédex</span>
+                    <a href="./index.html">
+                        <img src="./assets/img/pokedex.png" alt="">
+                    </a>
+                    <span>Pokédex</span>
                 </div>
                 <div class="searchbar">
                     <input id="inputSearch" type="text" placeholder="search Pokemon...">
@@ -34,10 +36,17 @@
                 </div>
             </div>
         </header>
-
+        <section class="loading_screen">
+            <div id="loadingScreen">
+                <img id="loadingBall" src="./assets/img/pokeball.png" alt="Loadingspinner">
+            </div>
+        </section>
         <main class="main_body">
             <div class="pkm_cards" id="pkmCards"></div>
-            <button id="morePkm" onclick="morePkm()">Load more Pokémon</button>
+            <div>
+                <button id="morePkm" onclick="morePkm()">Load more Pokémon</button>
+            </div>
+            
         </main>
 
         <footer>
@@ -67,4 +76,5 @@
 
     </div>
 </body>
+
 </html>
