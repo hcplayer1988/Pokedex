@@ -13,7 +13,7 @@ function getPkmPrevCard(pokemonList) {
     `).join('');
 
     html += `
-      <div class="pkm_cad_prev">
+      <div class="pkm_cad_prev" onclick="fetchSinglePokemon('${pokemon.name}')">
         <div class="pkm_header">
           <div>
             <span>#${pokemon.id}</span>
@@ -35,4 +35,50 @@ function getPkmPrevCard(pokemonList) {
   });
 
   return html;
+}
+
+
+// big Pokemoncard Template
+function bigPokeCard() {
+  return `
+    <div class="poke_content">
+      <div>
+        <span class="closeBtn" onclick="closePokeCard()">×</span>
+      </div>
+      <div class="pokemonHeader">
+        <h2 id="pokemonName"></h2>
+        <span id="pokemonId"></span>
+      </div>
+
+      <div class="seperator"></div>
+
+      <div class="pokemon_img">
+        <img id="modalSprite" src="" alt="Pokemon_image">
+      </div>
+
+      <div class="seperator"></div>
+
+      <div id="pokemonTypes" class="pokemon_types"></div>
+
+      <div class="seperator"></div>
+
+      <div class="modalSection">
+        <strong>Species:</strong> <span id="pokemonSpecies"></span>
+      </div>
+
+      <div class="modalSection">
+        <strong>Height:</strong> <span id="pokemonHeight"></span> &nbsp;
+        <strong>Weight:</strong> <span id="pokemonWeight"></span>
+      </div>
+
+      <div class="modalSection">
+        <strong>Abilities:</strong> <span id="pokemonAbilities"></span>
+      </div>
+
+      <div class="modalSection">
+        <strong>Breeding:</strong>
+        <div id="pokemonBreeding"></div>
+      </div>
+    </div>
+  `;
 }

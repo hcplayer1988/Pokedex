@@ -100,7 +100,8 @@ main {
     padding-bottom: 4px;
     padding-left: 16px;
     padding-right: 16px;
-    margin: 12px;
+    margin-top: 16px;
+    margin-bottom: 64px;
 }
 
 #loadingScreen {
@@ -140,4 +141,37 @@ main {
 #morePkm:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.poke_content {
+  height: 700px;
+  width: 310px;
+  color: whitesmoke;
+  border: solid 1px whitesmoke;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  background-color: #0d3341;
+}
+
+.pokemon_img img {
+  height: 300px;
+}
+
+.pokemon_types {
+  display: flex;
+  gap: 24px;
+}
+
+.pokemon_types img {
+  height: 50px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.modalSection {
+  padding-top: 8px;
+  padding-bottom: 8px;
 }

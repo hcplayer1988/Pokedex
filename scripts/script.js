@@ -72,9 +72,13 @@ function parseDetail(detail) {
     id: detail.id,
     name: detail.name,
     image: detail.sprites.front_default,
-    types: detail.types.map(t => t.type.name)
+    types: detail.types.map(t => t.type.name),
+    height: detail.height / 10 + " m",
+    weight: detail.weight / 10 + " kg",
+    abilities: detail.abilities.map(a => a.ability.name).join(", ")
   };
 }
+
 
 
 // render Pokemon card
@@ -120,5 +124,99 @@ function morePkm() {
     loadPokemonBatch();
     hideLoading(); 
   }, 1500);
+}
+
+
+// load big PokeCard
+async function fetchSinglePokemon(pokemonName) {
+  try {
+    let base = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+    let baseData = await base.json();
+    let species = await fetch(baseData.species.url);
+    let speciesData = await species.json();
+    let pokemon = parseFullPokemon(baseData, speciesData);
+    openBigCard(pokemon);
+  } catch (error) {
+    console.log("error load Pkm:", error);
+  }
+}
+
+
+function parseFullPokemon(base, species) {
+  return {
+    id: base.id,
+    name: base.name,
+    image: base.sprites.front_default,
+    types: base.types.map(t => t.type.name),
+    height: base.height / 10 + " m",
+    weight: base.weight / 10 + " kg",
+    abilities: base.abilities.map(a => a.ability.name).join(", "),
+    species: species.genera.find(g => g.language.name === "en")?.genus || "-",
+    breeding: {
+      genderRatio: species.gender_rate,
+      eggGroups: species.egg_groups.map(g => g.name).join(", ")
+    }
+  };
+}
+
+
+
+function openBigCard(pokemon) {
+  let bigerPokeCard = document.getElementById("bigCard");
+  bigerPokeCard.classList.remove("hidden");
+  bigerPokeCard.innerHTML = bigPokeCard();
+  fillBigCard(pokemon);
+}
+
+
+function fillBigCard(pokemon) {
+  setText("pokemonName", capitalize(pokemon.name));
+  setText("pokemonId", `#${pokemon.id}`);
+  setImage("modalSprite", pokemon.image);
+  setTypes("pokemonTypes", pokemon.types);
+  setText("pokemonSpecies", capitalize(pokemon.species || "-"));
+  setText("pokemonHeight", pokemon.height || "-");
+  setText("pokemonWeight", pokemon.weight || "-");
+  setText("pokemonAbilities", pokemon.abilities || "-");
+  fillBreedingInfo(pokemon.breeding);
+}
+
+
+function fillBreedingInfo(breeding) {
+  let breedContainer = document.getElementById("pokemonBreeding");
+  if (!breeding) return breedContainer.textContent = "No breedin informations availeble.";
+  let male = 100 - (breeding.genderRatio / 8 * 100);
+  let female = 100 - male;
+  breedContainer.innerHTML = `
+    <div>♂ ${male.toFixed(1)}%, ♀ ${female.toFixed(1)}%</div>
+    <div><strong>Egg Groups:</strong> ${breeding.eggGroups}</div>
+  `;
+}
+
+
+function closePokeCard() {
+  let bigerPokeCard = document.getElementById("bigCard");
+  bigerPokeCard.classList.add("hidden");
+  bigerPokeCard.innerHTML = "";
+}
+
+
+function setText(id, value) {
+  document.getElementById(id).textContent = value;
+}
+
+function setImage(id, src) {
+  document.getElementById(id).src = src;
+}
+
+function setTypes(id, types) {
+  const html = types.map(t =>
+    `<img src="./assets/icons/type_icons/${t}.svg" alt="${t}">`
+  ).join('');
+  document.getElementById(id).innerHTML = html;
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
