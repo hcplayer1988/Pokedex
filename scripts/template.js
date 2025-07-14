@@ -1,10 +1,10 @@
 // Pokemon preview card template
 
-
 function getPkmPrevCard(pokemonList) {
   let html = "";
 
   pokemonList.forEach((pokemon, index) => {
+    let typeColor = typeColors[pokemon.types[0]] || '#777';
     let typeIcons = pokemon.types.map(type => `
       <div>
         <img src="./assets/icons/type_icons/${type}.svg" alt="${type}">
@@ -22,7 +22,7 @@ function getPkmPrevCard(pokemonList) {
           </div>
         </div>
         <div class="seperator"></div>
-        <div class="pkm_pic">
+        <div class="pkm_pic" style="background-color: ${typeColor};">
           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png" alt="${pokemon.name}">
         </div>
         <div class="seperator"></div>

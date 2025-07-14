@@ -44,6 +44,8 @@ main {
 
 .pkm_pic {
     padding: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 .pkm_pic img {
