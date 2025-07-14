@@ -11,7 +11,7 @@ async function fetchPkm() {
     let detailedList = await fetchDetails(data.results);
     renderCards(detailedList);
   } catch (error) {
-    console.error("error loading Pokemon:", error);
+    console.log("error loading Pokemon:", error);
   }
 }
 
