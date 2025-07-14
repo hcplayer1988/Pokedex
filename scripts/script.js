@@ -1,3 +1,5 @@
+
+// colorcodes for Pokemon types
 let typeColors = {
   grass: '#8bfd52ff',
   fire: '#fc4f46ff',
@@ -20,29 +22,35 @@ let typeColors = {
 };
 
 
+let currentOffset = 0;
+let pokemonLimit = 40;
+
+
 function init() {
     fetchPkm();
 }
 
 
 // main fetch
-async function fetchPkm() {
+async function fetchPkm(offset = 0, limit = pokemonLimit) {
   try {
-    let data = await fetchBaseData();
+    if (offset >= 151) return;
+    limit = Math.min(limit, 151 - offset);
+    let data = await fetchBaseData(offset, limit);
     let detailedList = await fetchDetails(data.results);
     renderCards(detailedList);
   } catch (error) {
-    console.log("error loading Pokemon:", error);
+    console.log("error load Pkm:", error);
   }
 }
 
 
 // load Base data
-async function fetchBaseData() {
-  let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0');
+async function fetchBaseData(offset, limit) {
+  let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
+  let response = await fetch(url);
   return await response.json();
 }
-
 
 // load details of Pokemon
 async function fetchDetails(basicList) {
@@ -71,7 +79,25 @@ function parseDetail(detail) {
 function renderCards(pokemonList) {
   let prevCard = document.getElementById("pkmCards");
   let html = getPkmPrevCard(pokemonList);
-  prevCard.innerHTML = html;
+  prevCard.innerHTML += html;
   console.log(pokemonList);
 }
+
+
+function morePkm() {
+  if (currentOffset >= 151) {
+    document.getElementById("morePkm").style.display = "none";
+    return;
+  }
+
+  let remaining = 151 - currentOffset;
+  let loadAmount = Math.min(pokemonLimit, remaining);
+  fetchPkm(currentOffset, loadAmount);
+  currentOffset += loadAmount;
+
+  if (currentOffset >= 151) {
+    document.getElementById("morePkm").style.display = "none";
+  }
+}
+
 

@@ -15,7 +15,7 @@ function getPkmPrevCard(pokemonList) {
       <div class="pkm_cad_prev">
         <div class="pkm_header">
           <div>
-            <span>#${index + 1}</span>
+            <span>#${index + 1 + currentOffset}</span>
           </div>
           <div>
             <span>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</span>
@@ -23,7 +23,7 @@ function getPkmPrevCard(pokemonList) {
         </div>
         <div class="seperator"></div>
         <div class="pkm_pic" style="background-color: ${typeColor};">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png" alt="${pokemon.name}">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png" alt="${pokemon.name}">
         </div>
         <div class="seperator"></div>
         <div class="pkm_footer">
