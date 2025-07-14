@@ -27,8 +27,10 @@ let pokemonLimit = 40;
 
 
 function init() {
-    fetchPkm();
+  fetchPkm(currentOffset, pokemonLimit);
+  currentOffset += pokemonLimit;
 }
+
 
 
 // main fetch
@@ -83,18 +85,16 @@ function renderCards(pokemonList) {
   console.log(pokemonList);
 }
 
-
+// load more Pokemon
 function morePkm() {
   if (currentOffset >= 151) {
     document.getElementById("morePkm").style.display = "none";
     return;
   }
-
   let remaining = 151 - currentOffset;
   let loadAmount = Math.min(pokemonLimit, remaining);
   fetchPkm(currentOffset, loadAmount);
   currentOffset += loadAmount;
-
   if (currentOffset >= 151) {
     document.getElementById("morePkm").style.display = "none";
   }
