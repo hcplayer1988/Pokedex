@@ -47,7 +47,7 @@ function bigPokeCard() {
     </div>
     <div class="poke_content">
       <div id="close">
-        <span class="closeBtn" onclick="closePokeCard()">X close</span>
+        <span class="closeBtn" onclick="closePokeCard()">close</span>
       </div>
       <div class="pokemonHeader">
         <h2 id="pokemonName"></h2>

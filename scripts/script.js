@@ -1,7 +1,7 @@
 
+let masterPokemonList = [];
 let allPokemonList = [];
 let currentPokemonIndex = 0;
-
 
 
 // colorcodes for Pokemon types
@@ -32,9 +32,25 @@ let pokemonLimit = 40;
 
 
 function init() {
+  preloadPokemonList();
+  enableOverlayClose();
+  enableEscClose();
   fetchPkm(currentOffset, pokemonLimit);
   currentOffset += pokemonLimit;
 }
+
+
+function enableOverlayClose() {
+  document.getElementById("blurOverlay").addEventListener("click", closePokeCard);
+}
+
+
+function enableEscClose() {
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closePokeCard();
+  });
+}
+
 
 
 // main fetch
@@ -84,7 +100,6 @@ function parseDetail(detail) {
     abilities: detail.abilities.map(a => a.ability.name).join(", ")
   };
 }
-
 
 
 // render Pokemon card
@@ -168,7 +183,6 @@ function parseFullPokemon(base, species) {
 }
 
 
-
 function openBigCard(pokemon) {
   let bigerPokeCard = document.getElementById("bigCard");
   bigerPokeCard.classList.remove("hidden");
@@ -186,7 +200,6 @@ function fillBigCard(pokemon) {
   let mainType = pokemon.types[0];
   let bgColor = typeColors[mainType] || "#777";
   document.querySelector(".pokemon_img").style.backgroundColor = bgColor;
-
   setTypes("pokemonTypes", pokemon.types);
   setText("pokemonSpecies", capitalize(pokemon.species || "-"));
   setText("pokemonHeight", pokemon.height || "-");
@@ -260,7 +273,6 @@ function showNextPokemon() {
 }
 
 
-
 function showPrevPokemon() {
   if (allPokemonList.length === 0) return;
   currentPokemonIndex--;
@@ -269,7 +281,6 @@ function showPrevPokemon() {
   }
   fetchSinglePokemon(allPokemonList[currentPokemonIndex].name);
 }
-
 
 
 function showBaseData() {
@@ -289,3 +300,56 @@ function showStatsData() {
   document.getElementById("baseStats").style.display = "block";
 }
 
+
+async function preloadPokemonList() {
+  try {
+    let response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
+    let data = await response.json();
+    masterPokemonList = data.results;
+  } catch (error) {
+    console.log("error preload list:", error);
+  }
+}
+
+
+function searchPokemon() {
+  let searchValue = document.getElementById("inputSearch").value.trim().toLowerCase();
+  if (searchValue.length < 3) {
+    alert("Please enter at least 3 letters.");
+    return;
+  }
+  let matching = masterPokemonList.filter(p => p.name.includes(searchValue));
+  if (matching.length === 0) {
+    alert("No Pokémon found.");
+    return;
+  }
+  fetchDetails(matching).then(renderCards);
+  document.getElementById("inputSearch").value = "";
+  document.getElementById("pkmCards").innerHTML = "";
+  document.getElementById("pkmCards").style.gridTemplateColumns = "repeat(auto-fit, minmax(140px, 1fr))";
+  setupResetButton();
+}
+
+
+function setupResetButton() {
+  let moreBtn = document.getElementById("morePkm");
+  moreBtn.style.display = "none";
+  if (document.getElementById("resetBtn")) return;
+  let btn = document.createElement("button");
+  btn.textContent = "Back to start";
+  btn.id = "resetBtn";
+  btn.className = "back_button";
+  btn.onclick = () => resetView(btn, moreBtn);
+  moreBtn.parentElement.appendChild(btn);
+}
+
+
+function resetView(btn, moreBtn) {
+  document.getElementById("pkmCards").innerHTML = "";
+  currentOffset = 0;
+  fetchPkm(currentOffset, pokemonLimit);
+  currentOffset += pokemonLimit;
+  btn.remove();
+  moreBtn.style.display = "inline-block";
+  document.getElementById("pkmCards").style.gridTemplateColumns = "";
+}
