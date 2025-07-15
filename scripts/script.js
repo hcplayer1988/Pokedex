@@ -1,4 +1,9 @@
 
+let allPokemonList = [];
+let currentPokemonIndex = 0;
+
+
+
 // colorcodes for Pokemon types
 let typeColors = {
   grass: '#8bfd52ff',
@@ -32,7 +37,6 @@ function init() {
 }
 
 
-
 // main fetch
 async function fetchPkm(offset = 0, limit = pokemonLimit) {
   try {
@@ -54,8 +58,10 @@ async function fetchBaseData(offset, limit) {
   return await response.json();
 }
 
+
 // load details of Pokemon
 async function fetchDetails(basicList) {
+  allPokemonList.push(...basicList);
   return await Promise.all(
     basicList.map(async (pkm) => {
       let res = await fetch(pkm.url);
@@ -129,6 +135,7 @@ function morePkm() {
 
 // load big PokeCard
 async function fetchSinglePokemon(pokemonName) {
+  currentPokemonIndex = allPokemonList.findIndex(p => p.name === pokemonName);
   try {
     let base = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
     let baseData = await base.json();
@@ -160,12 +167,12 @@ function parseFullPokemon(base, species) {
 }
 
 
-
 function openBigCard(pokemon) {
   let bigerPokeCard = document.getElementById("bigCard");
   bigerPokeCard.classList.remove("hidden");
   bigerPokeCard.innerHTML = bigPokeCard();
   fillBigCard(pokemon);
+  document.getElementById("blurOverlay").classList.remove("hidden");
 }
 
 
@@ -198,6 +205,7 @@ function closePokeCard() {
   let bigerPokeCard = document.getElementById("bigCard");
   bigerPokeCard.classList.add("hidden");
   bigerPokeCard.innerHTML = "";
+  document.getElementById("blurOverlay").classList.add("hidden");
 }
 
 
@@ -205,9 +213,11 @@ function setText(id, value) {
   document.getElementById(id).textContent = value;
 }
 
+
 function setImage(id, src) {
   document.getElementById(id).src = src;
 }
+
 
 function setTypes(id, types) {
   const html = types.map(t =>
@@ -216,7 +226,24 @@ function setTypes(id, types) {
   document.getElementById(id).innerHTML = html;
 }
 
+
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+
+function showNextPokemon() {
+  if (allPokemonList.length && currentPokemonIndex < allPokemonList.length - 1) {
+    currentPokemonIndex++;
+    fetchSinglePokemon(allPokemonList[currentPokemonIndex].name);
+  }
+}
+
+
+function showPrevPokemon() {
+  if (allPokemonList.length && currentPokemonIndex > 0) {
+    currentPokemonIndex--;
+    fetchSinglePokemon(allPokemonList[currentPokemonIndex].name);
+  }
 }
 

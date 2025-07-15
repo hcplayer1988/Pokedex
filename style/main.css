@@ -150,13 +150,41 @@ main {
   cursor: not-allowed;
 }
 
-/* das hier kann später weg*/
 #bigCard {
-  margin-bottom: 60px;
   border-radius: 20px;
   background-color: #0d3341;
-  height: 600px;
-  width: 400px;
+  height: 770px;
+  width: 700px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 0;
+  margin: 0;
+}
+
+.poke_nav_left,
+.poke_nav_right {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.poke_nav_left img {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin-left: 16px;
+}
+
+.poke_nav_right img {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin-right: 16px;
 }
 
 .poke_content {
@@ -167,8 +195,11 @@ main {
   flex-direction: column;
   align-items: center;
   padding: 12px;
-  background-color: #144f64;
+  background-color: #00465f;
   padding: 0;
+  margin: 0;
+  height: 730px;
+  width: 400px;
 }
 
 .pokemonHeader {
@@ -247,4 +278,43 @@ main {
 #abilities {
   padding-top: 2px;
   padding-bottom: 2px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  width: 90%;
+  max-width: 500px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+#blurOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
 }

@@ -41,6 +41,10 @@ function getPkmPrevCard(pokemonList) {
 // big Pokemoncard Template
 function bigPokeCard() {
   return `
+    <div class="poke_nav_left" onclick="showPrevPokemon()">
+      <img src="./assets/icons/last.png" alt="Previous">
+    </div>
+
     <div class="poke_content">
       <div id="close">
         <span class="closeBtn" onclick="closePokeCard()">X close</span>
@@ -83,5 +87,10 @@ function bigPokeCard() {
         </div>
       </div>
     </div>
+
+    <div class="poke_nav_right" onclick="showNextPokemon()">
+      <img src="./assets/icons/next.png" alt="Next">
+    </div>
+
   `;
 }

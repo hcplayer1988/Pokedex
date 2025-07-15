@@ -46,6 +46,11 @@ header button {
         padding-left: 8px;
         padding-right: 8px;
     }
+
+     #bigCard {
+        width: 400px;
+        height: 770px;
+    }
 }
 
 @media(max-width: 465px) {
@@ -77,6 +82,7 @@ header button {
     }
 
     #bigCard {
-        width: 310px;
+        width: 300px;
+        height: 795px;
     }
 }
