@@ -13,7 +13,7 @@ main {
 .pkm_cards {
     padding: 32px 72px;
     width: 100%;
-    max-width: 1440px;
+    max-width: 1920px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -255,7 +255,6 @@ main {
   height: 50px;
   padding-top: 8px;
   padding-bottom: 8px;
-  
 }
 
 .modalSection {
@@ -319,7 +318,6 @@ main {
     transform: translate(-50%, -50%);
   }
 }
-
 
 #blurOverlay {
   position: fixed;

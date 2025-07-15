@@ -1,7 +1,3 @@
-
-
-// Pokemon preview card template
-
 function getPkmPrevCard(pokemonList) {
   let html = "";
 
@@ -12,7 +8,6 @@ function getPkmPrevCard(pokemonList) {
         <img src="./assets/icons/type_icons/${type}.svg" alt="${type}">
       </div>
     `).join('');
-
     html += `
       <div class="pkm_cad_prev" onclick="fetchSinglePokemon('${pokemon.name}')">
         <div class="pkm_header">
@@ -34,12 +29,10 @@ function getPkmPrevCard(pokemonList) {
       </div>
     `;
   });
-
   return html;
 }
 
 
-// big Pokemoncard Template
 function bigPokeCard() {
   return `
     <div class="poke_nav_left" onclick="showPrevPokemon()">

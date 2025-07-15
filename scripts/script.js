@@ -1,10 +1,8 @@
-
 let masterPokemonList = [];
 let allPokemonList = [];
 let currentPokemonIndex = 0;
 
 
-// colorcodes for Pokemon types
 let typeColors = {
   grass: '#8bfd52ff',
   fire: '#fc4f46ff',
@@ -52,8 +50,6 @@ function enableEscClose() {
 }
 
 
-
-// main fetch
 async function fetchPkm(offset = 0, limit = pokemonLimit) {
   try {
     if (offset >= 151) return;
@@ -67,7 +63,6 @@ async function fetchPkm(offset = 0, limit = pokemonLimit) {
 }
 
 
-// load Base data
 async function fetchBaseData(offset, limit) {
   let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
   let response = await fetch(url);
@@ -75,7 +70,6 @@ async function fetchBaseData(offset, limit) {
 }
 
 
-// load details of Pokemon
 async function fetchDetails(basicList) {
   allPokemonList.push(...basicList);
   return await Promise.all(
@@ -88,7 +82,6 @@ async function fetchDetails(basicList) {
 }
 
 
-// read base data of pokemon
 function parseDetail(detail) {
   return {
     id: detail.id,
@@ -102,7 +95,6 @@ function parseDetail(detail) {
 }
 
 
-// render Pokemon card
 function renderCards(pokemonList) {
   let prevCard = document.getElementById("pkmCards");
   let html = getPkmPrevCard(pokemonList);
@@ -111,7 +103,6 @@ function renderCards(pokemonList) {
 }
 
 
-// loadingspiner
 function showLoadingSpinner() {
   document.getElementById("loadingScreen").style.display = "block";
   document.querySelector("main").classList.add("blur");
@@ -148,7 +139,6 @@ function morePkm() {
 }
 
 
-// load big PokeCard
 async function fetchSinglePokemon(pokemonName) {
   currentPokemonIndex = allPokemonList.findIndex(p => p.name === pokemonName);
   try {
@@ -267,7 +257,7 @@ function showNextPokemon() {
   if (allPokemonList.length === 0) return;
   currentPokemonIndex++;
   if (currentPokemonIndex >= allPokemonList.length) {
-    currentPokemonIndex = 0; // ⏪ Zurück zum ersten Pokémon
+    currentPokemonIndex = 0;
   }
   fetchSinglePokemon(allPokemonList[currentPokemonIndex].name);
 }
@@ -277,7 +267,7 @@ function showPrevPokemon() {
   if (allPokemonList.length === 0) return;
   currentPokemonIndex--;
   if (currentPokemonIndex < 0) {
-    currentPokemonIndex = allPokemonList.length - 1; // ⏩ Zum letzten Pokémon
+    currentPokemonIndex = allPokemonList.length - 1;
   }
   fetchSinglePokemon(allPokemonList[currentPokemonIndex].name);
 }
