@@ -48,8 +48,12 @@ header button {
     }
 
      #bigCard {
-        width: 400px;
+        width: 380px;
         height: 770px;
+    }
+
+    .pokemon_img img {
+        height: 200px;
     }
 }
 
@@ -82,7 +86,26 @@ header button {
     }
 
     #bigCard {
-        width: 300px;
-        height: 795px;
+        width: 280px;
+        height: auto;
+    }
+
+    #bigCard h2 {
+        font-size: 24px;
+    }
+
+    .pokemon_img img {
+        height: 180px;
+    }
+
+    #base_button{
+        padding: 2px 8px;
+        font-size: 16px;
+    }
+
+
+    #stats_button{
+        padding: 2px 8px;
+        font-size: 16px;
     }
 }

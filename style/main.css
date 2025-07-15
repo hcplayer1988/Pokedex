@@ -198,7 +198,8 @@ main {
   padding: 12px;
   background-color: #00465f;
   padding: 0;
-  margin: 0;
+  margin-top: 12px;
+  margin-bottom: 12px;
   height: 100%px;
   width: 400px;
 }
@@ -227,6 +228,10 @@ main {
   cursor: pointer;
   font-size: 20px;
   font-weight: 700;
+}
+
+.pokemon_img {
+  border-radius: 20px;
 }
 
 .pokemon_img img {
@@ -353,6 +358,7 @@ main {
   font-weight: 700;
   color: whitesmoke;
   margin-bottom: 8px;
+  margin-top: 8px;
 }
 
 #stats_button {
@@ -365,6 +371,7 @@ main {
   font-weight: 700;
   color: whitesmoke;
   margin-bottom: 8px;
+  margin-top: 8px;
 }
 
 #baseStats {

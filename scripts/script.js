@@ -183,6 +183,10 @@ function fillBigCard(pokemon) {
   setText("pokemonName", capitalize(pokemon.name));
   setText("pokemonId", `#${pokemon.id}`);
   setImage("modalSprite", pokemon.image);
+  let mainType = pokemon.types[0];
+  let bgColor = typeColors[mainType] || "#777";
+  document.querySelector(".pokemon_img").style.backgroundColor = bgColor;
+
   setTypes("pokemonTypes", pokemon.types);
   setText("pokemonSpecies", capitalize(pokemon.species || "-"));
   setText("pokemonHeight", pokemon.height || "-");
@@ -247,19 +251,25 @@ function capitalize(str) {
 
 
 function showNextPokemon() {
-  if (allPokemonList.length && currentPokemonIndex < allPokemonList.length - 1) {
-    currentPokemonIndex++;
-    fetchSinglePokemon(allPokemonList[currentPokemonIndex].name);
+  if (allPokemonList.length === 0) return;
+  currentPokemonIndex++;
+  if (currentPokemonIndex >= allPokemonList.length) {
+    currentPokemonIndex = 0; // ⏪ Zurück zum ersten Pokémon
   }
+  fetchSinglePokemon(allPokemonList[currentPokemonIndex].name);
 }
+
 
 
 function showPrevPokemon() {
-  if (allPokemonList.length && currentPokemonIndex > 0) {
-    currentPokemonIndex--;
-    fetchSinglePokemon(allPokemonList[currentPokemonIndex].name);
+  if (allPokemonList.length === 0) return;
+  currentPokemonIndex--;
+  if (currentPokemonIndex < 0) {
+    currentPokemonIndex = allPokemonList.length - 1; // ⏩ Zum letzten Pokémon
   }
+  fetchSinglePokemon(allPokemonList[currentPokemonIndex].name);
 }
+
 
 
 function showBaseData() {
