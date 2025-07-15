@@ -74,5 +74,9 @@ header button {
     .footer_img img {
         height: 64px;
         width: 64px;
-    }    
+    }
+
+    #bigCard {
+        width: 310px;
+    }
 }

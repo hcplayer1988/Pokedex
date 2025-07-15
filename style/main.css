@@ -49,6 +49,13 @@ main {
     background-color: whitesmoke;;
 }
 
+.seperator_grey {
+    height: 2px;
+    width: 90%;
+    background-color: rgb(209, 209, 209);
+    border-radius: 10px;
+}
+
 .pkm_header {
     width: 100%;
     display: flex;
@@ -143,35 +150,101 @@ main {
   cursor: not-allowed;
 }
 
-.poke_content {
-  height: 700px;
-  width: 310px;
-  color: whitesmoke;
-  border: solid 1px whitesmoke;
+/* das hier kann später weg*/
+#bigCard {
+  margin-bottom: 60px;
   border-radius: 20px;
+  background-color: #0d3341;
+  height: 600px;
+  width: 400px;
+}
+
+.poke_content {
+  border-radius: 20px;
+  color: whitesmoke;
+  border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 12px;
-  background-color: #0d3341;
+  background-color: #144f64;
+  padding: 0;
+}
+
+.pokemonHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 8px;
+  font-size: 20px;
+}
+
+#close {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-top: 8px;
+  margin-right: 60px;
+}
+
+.closeBtn {
+  border-radius: 5px;
+  background-color: orange;
+  padding: 2px 4px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .pokemon_img img {
-  height: 300px;
+  height: 400px;
 }
 
 .pokemon_types {
   display: flex;
   gap: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .pokemon_types img {
   height: 50px;
   padding-top: 8px;
   padding-bottom: 8px;
+  
 }
 
 .modalSection {
   padding-top: 8px;
   padding-bottom: 8px;
+}
+
+.stats {
+  background-color: whitesmoke;
+  color: black;
+  width: 100%;
+  border-radius: 20px;
+  padding-left: 12px;
+  padding-bottom: 12px;
+  margin: 0;
+  font-size: 18px;
+}
+
+#species {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+#bodyStats {
+  padding-top: 2px;
+  padding-bottom: 2px;;
+}
+
+#abilities {
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
