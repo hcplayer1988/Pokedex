@@ -162,9 +162,11 @@ function parseFullPokemon(base, species) {
     breeding: {
       genderRatio: species.gender_rate,
       eggGroups: species.egg_groups.map(g => g.name).join(", ")
-    }
+    },
+    stats: base.stats.map(s => ({ name: s.stat.name, value: s.base_stat }))
   };
 }
+
 
 
 function openBigCard(pokemon) {
@@ -173,6 +175,7 @@ function openBigCard(pokemon) {
   bigerPokeCard.innerHTML = bigPokeCard();
   fillBigCard(pokemon);
   document.getElementById("blurOverlay").classList.remove("hidden");
+  showBaseData();
 }
 
 
@@ -186,6 +189,17 @@ function fillBigCard(pokemon) {
   setText("pokemonWeight", pokemon.weight || "-");
   setText("pokemonAbilities", pokemon.abilities || "-");
   fillBreedingInfo(pokemon.breeding);
+  fillStatSection(pokemon.stats);
+}
+
+
+function fillStatSection(stats) {
+  if (!stats || stats.length === 0) return;
+
+  stats.forEach(s => {
+    setText(`stat_${s.name}`, capitalize(s.name));
+    setText(`stat_${s.name}_value`, s.value);
+  });
 }
 
 
@@ -245,5 +259,23 @@ function showPrevPokemon() {
     currentPokemonIndex--;
     fetchSinglePokemon(allPokemonList[currentPokemonIndex].name);
   }
+}
+
+
+function showBaseData() {
+  document.getElementById("species").style.display = "block";
+  document.getElementById("bodyStats").style.display = "block";
+  document.getElementById("abilities").style.display = "block";
+  document.getElementById("breeding").style.display = "block";
+  document.getElementById("baseStats").style.display = "none";
+}
+
+
+function showStatsData() {
+  document.getElementById("species").style.display = "none";
+  document.getElementById("bodyStats").style.display = "none";
+  document.getElementById("abilities").style.display = "none";
+  document.getElementById("breeding").style.display = "none";
+  document.getElementById("baseStats").style.display = "block";
 }
 
